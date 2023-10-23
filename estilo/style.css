@@ -1,0 +1,217 @@
+@charset "UTF-8";
+
+/*aqui abaixo é para importar uma font do google fontes, ai vc escolhe a fonte, e vai em import, e copia o codigo abaixo no site, depois disso coloque tb como fonte destaque para usar como variavel*/
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+/*abaixo é como fazer para colocar uma fonte que foi baixada no compuyador e tb coloque como variavel os dois pontos antes da /fontes/idroid serve para mostrar que esta em outra pasta dentro da pasta atual */
+@font-face {
+        font-family: 'Android';
+        src: url('../fontes/idroid.otf') format('opentype');
+        font-weight: normal;
+}
+
+/* abaixo é uma variavel usando o :root eu faço uma variavel, nesse caso de cor, so eu escoher a cor que quero e deixar salvo nas cores 0,1,2... e apertar ctrl+espço na hr da escolha*/
+:root { 
+        --cor0: #c6ceb3;
+        --cor1: #83e1ad;
+        --cor2: #3ddc84;
+        --cor3: #2fa866;
+        --cor4: #1a5c37;
+        --cor5: #063d1e;
+
+        --fonte-padrao: Arial, Verdana, Helvetica, sans-serif;
+        --fonte-destaque: 'Bebas Neue', cursive;
+        --fonte-android: 'Android', cursive;
+}
+
+/*para fazer uma variavel global e tirar todos os espaçamentos entre  cada box usa-se *, exemplo abaixo )cap 17 aula 06 mod02*/
+* {
+        margin: 0px;
+        padding: 0px;
+}
+
+body {
+        background-color: var(--cor0);
+        font-family: var(--fonte-padrao);
+    
+}
+
+a.externo::after {
+        content: '\00A0\1f517';
+}
+
+div.video {
+        background-color: var(--cor5);
+        margin-bottom: 30px;
+        margin: 0px -20px 30px 0px;
+        padding: 20px;
+        padding-bottom: 58.5%; /*se quando der play no video ficar com a barra preta do lado do video, somente mexer na porcentagem aqui do padding-bottom que irá ajustar*/
+
+        position: relative; /*unica forma de mexer no video temos que colocar position relative e no div.video>iframe position absolute*/
+}
+
+div.video > iframe {
+        position: absolute;
+        top: 5%; /*distancia do top e abaixo da esquerda*/
+        left: 5%;
+        width: 90%; /*temos que colocar width e height para preenxer a box e assim acompanhar o tamanho da tela*/
+        height: 90%;
+}
+
+header {
+        background-image: linear-gradient(to bottom, var(--cor2), var(--cor5));
+        padding: 20px;
+        margin: auto;
+        min-height: 150px; /*altura minima do header para se adaptar em qualquer dispositivo*/
+}
+
+header > h1 {
+        color:white;   
+        font-family: var(--fonte-destaque);  
+        text-align: center; 
+        margin-bottom: 20px; /*espaço entre o texto h1 e p*/
+        font-size: 3em; /*tamanho da fonte*/
+        text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.418);
+        font-weight: normal; /*para tirar o negrito do h1 ,  h2 e h3*/
+
+}
+
+header > p {
+        color: white;
+        font-family: var(--fonte-padrao);
+        font-size: 1.2em;
+        max-width: 600px; /*largura do paragrafo*/
+        margin: auto;
+        padding-left: 10px;
+        padding-right: 10px;
+        text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.418);
+}
+
+nav {
+        background-color: var(--cor5);
+        padding: 10px;
+        margin: auto;
+        text-align: center;
+}
+
+nav > a {
+        color: var(--cor0);
+        padding: 10px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition-duration: 0.5s; /*no menu muda de cor e demora a sair meio segundo*/
+
+}
+
+nav > a:hover {
+        background-color: var(--cor3);
+        color: var(--cor5);
+}
+
+main {
+        background-color: white;
+        padding: 20px; /*para definir distancia interno entre o elemento e a borda*/
+        border-bottom-left-radius: 10px; /*colocar borda arredoindada na box parte de baixo esquerdo e abaixo direito*/
+        border-bottom-right-radius: 10px;
+
+        min-width: 280px; /*tamanho minimo da box, usado para celular*/
+        max-width: 800px; /* tamanho maximo da box*/
+        margin: auto;/*deixa o main no meio da tela*/
+        margin-bottom: 30px; /* separando o rodape do conteudo principal*/
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.486); /*uma sombra em volta da box*/
+
+}
+
+
+main p {
+        margin: 15px 0px; /*margin dos paragrafos*/
+        text-align: justify; /*ajustar os paragrafos*/
+        text-indent: 30px; /*espaço antes de cada paragrafo*/
+        line-height: 1.5em; /*distancia entre as linhas*/
+        font-size: 1em ; /*tamanho da fonte*/
+}
+
+main a {
+        text-decoration: none;
+        font-weight: bold;
+        color: var(--cor5);
+        background-color: #2fa866;
+        padding: 2px 6px;
+}
+
+
+main a:hover {
+        text-decoration: underline;
+        color: var(--cor4);
+}
+
+main strong {
+        color: var(--cor5);
+        font-weight: bold;
+        padding: 2px 6px;
+}
+
+main h1 {
+        color: var(--cor5);
+        font-family: var(--fonte-android);
+}
+
+main h2 {
+        font-family: var(--fonte-android);
+        color: var(--cor5);
+        font-size: 1.3em;
+        background-image: linear-gradient(to right, var(--cor2), transparent);
+        text-indent: 8px;
+}
+
+img {
+        width: 100%; /*usado para ela sempre ocupar 100% da tela, independente do tamanho.*/
+}
+
+main img.pequena {
+        max-width: 350px;
+        display: block;
+        margin: auto; /*para deixar a imagem menor e centralizada, usasse max-width e o tamanho escolhido, e somente margin auto nao centraliza a imagem, tem que usar tambem display block*/
+}
+
+aside {
+        background-color: var(--cor1);
+        padding: 10px;
+        border-radius: 15px;
+        box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.479);
+}
+
+aside > h3 {
+        background-color: var(--cor4);
+        color: white;
+        padding: 10px;
+        margin: -10px -10px 0px -10px; /*para igualar a margem com o backgroud color*/
+        border-radius: 15px 15px 0px 0px; /* arredondou somente a parte de cima da borda*/
+        text-align: center;
+}
+
+aside > ul {
+        list-style-type: '\2714\00A0'; /*eguei o simbolo de check no emojepedia copiei o codico 2714 e usei da forma a cima, o codigo 00A0 é para dar um espaço somente*/
+        list-style-position: inside; /*para colocar os simbolos que estavam pra fora do background color do aside pra dentro.*/
+        columns: 2;
+}
+
+footer {
+        background-color: var(--cor5);
+        color: white;
+        text-align: center; /* para colocar o texto no centro*/
+        font-size: 0.8em;
+        padding: 5px;
+}
+
+footer a {
+        color: white;
+        font-weight: bolder;
+        text-decoration: none;
+}
+
+footer a:hover {
+        text-decoration: underline;
+        color: var(--cor2);
+}
